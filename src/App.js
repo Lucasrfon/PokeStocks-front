@@ -1,8 +1,14 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './components/css/reset.css';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/home' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
