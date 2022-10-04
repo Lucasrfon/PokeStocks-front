@@ -34,7 +34,7 @@ export default function SignUp() {
 
     if (user.password.length !== 8) {
       setDisable(false);
-      return alert("A senha deve ter 8 caractéres");
+      return alert("A senha deve ter 8 caracteres");
     }
 
     if (user.email !== user.confirmEmail) {
