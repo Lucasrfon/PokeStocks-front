@@ -1,0 +1,1 @@
+export const reqRoot = "http://localhost:5000"
