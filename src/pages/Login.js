@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { reqRoot } from "../components/utils/reqRoot";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,8 +26,16 @@ export default function Login() {
   }
 
   async function sendUser() {
-    console.log(user);
-    navigate("/home");
+    try {
+      await axios.post(`${reqRoot}/login`, user);
+      navigate("/home");
+    } catch (error) {
+      setDisable(false);
+      if (error.response.status === 401) {
+        return alert(error.response.data);
+      }
+      console.log(error);
+    }
   }
 
   return (
@@ -49,7 +59,9 @@ export default function Login() {
             Login
           </Button>
         </form>
-        <StyledLink to="/signup">Não tem uma conta ainda? Cadastre-se!</StyledLink>
+        <StyledLink to="/signup">
+          Não tem uma conta ainda? Cadastre-se!
+        </StyledLink>
       </main>
       <Footer />
     </Container>
