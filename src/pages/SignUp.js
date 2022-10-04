@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
-import { useState } from "react";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -44,8 +45,16 @@ export default function SignUp() {
   }
 
   async function sendNewUser() {
-    console.log(user);
-    navigate("/");
+    try {
+      await axios.post(`http://localhost:5000/signup`, user);
+      navigate("/");
+    } catch (error) {
+      setDisable(false);
+      if (error.response.status === 409) {
+        return alert("E-mail já cadastrado!");
+      }
+      console.log(error);
+    }
   }
 
   return (
