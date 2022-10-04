@@ -4,14 +4,11 @@ import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 import { useState } from "react";
 
-export default function SignUp() {
+export default function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
     email: "",
-    confirmEmail: "",
     password: "",
-    confirmPassword: "",
   });
   const [disable, setDisable] = useState(false);
 
@@ -19,33 +16,16 @@ export default function SignUp() {
     event.preventDefault();
     setDisable(true);
 
-    if (
-      !user.email ||
-      !user.password ||
-      !user.name ||
-      !user.confirmEmail ||
-      !user.confirmPassword
-    ) {
+    if (!user.email || !user.password) {
       setDisable(false);
       return alert(`Para prosseguir é necessário preencher todos os campos`);
     }
-
-    if (user.email !== user.confirmEmail) {
-      setDisable(false);
-      return alert(`Confirmação de email não corresponde`);
-    }
-
-    if (user.password !== user.confirmPassword) {
-      setDisable(false);
-      return alert(`Confirmação de senha não corresponde`);
-    }
-
-    sendNewUser();
+    sendUser();
   }
 
-  async function sendNewUser() {
+  async function sendUser() {
     console.log(user);
-    navigate("/");
+    navigate("/home");
   }
 
   return (
@@ -54,21 +34,10 @@ export default function SignUp() {
       <main>
         <form onSubmit={checkFields}>
           <input
-            placeholder="Nome"
-            value={user.name}
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
-          />
-          <input
             placeholder="E-mail"
             type="email"
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
-          />
-          <input
-            placeholder="Confirmar e-mail"
-            type="email"
-            value={user.confirmEmail}
-            onChange={(e) => setUser({ ...user, confirmEmail: e.target.value })}
           />
           <input
             placeholder="Senha"
@@ -76,19 +45,11 @@ export default function SignUp() {
             value={user.password}
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
-          <input
-            placeholder="Confirmar senha"
-            type="password"
-            value={user.confirmPassword}
-            onChange={(e) =>
-              setUser({ ...user, confirmPassword: e.target.value })
-            }
-          />
           <Button disabled={disable} typeof="submit">
-            Sign Up
+            Login
           </Button>
         </form>
-        <StyledLink to="/">Já tem cadastro? Faça login!</StyledLink>
+        <StyledLink to="/signup">Não tem uma conta ainda? Cadastre-se!</StyledLink>
       </main>
       <Footer />
     </Container>
