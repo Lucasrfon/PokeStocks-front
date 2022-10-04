@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
+import { reqRoot } from "../components/utils/reqRoot";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ export default function SignUp() {
 
   async function sendNewUser() {
     try {
-      await axios.post(`http://localhost:5000/signup`, user);
+      await axios.post(`${reqRoot}/signup`, user);
       navigate("/");
     } catch (error) {
       setDisable(false);
