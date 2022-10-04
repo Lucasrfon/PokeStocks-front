@@ -31,6 +31,11 @@ export default function SignUp() {
       return alert(`Para prosseguir é necessário preencher todos os campos`);
     }
 
+    if (user.password.length !== 8) {
+      setDisable(false);
+      return alert("A senha deve ter 8 caractéres");
+    }
+
     if (user.email !== user.confirmEmail) {
       setDisable(false);
       return alert(`Confirmação de email não corresponde`);
