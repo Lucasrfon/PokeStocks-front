@@ -22,6 +22,12 @@ export default function Login() {
       setDisable(false);
       return alert(`Para prosseguir é necessário preencher todos os campos`);
     }
+
+    if (user.password.length !== 8) {
+      setDisable(false);
+      return alert("A senha deve ter 8 caracteres");
+    }
+
     sendUser();
   }
 
