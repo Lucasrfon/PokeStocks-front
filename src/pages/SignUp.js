@@ -29,6 +29,17 @@ export default function SignUp() {
       setDisable(false);
       return alert(`Para prosseguir é necessário preencher todos os campos`);
     }
+
+    if(user.email !== user.confirmEmail) {
+      setDisable(false);
+      return alert(`Confirmação de email não corresponde`);
+    }
+
+    if(user.password !== user.confirmPassword) {
+      setDisable(false);
+      return alert(`Confirmação de senha não corresponde`);
+    }
+    
     sendNewUser();
   }
 
