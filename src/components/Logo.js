@@ -9,7 +9,7 @@ export default function Logo() {
       <img src={pokemon} alt="pokemon" />
       <img src={pokeball} alt="img" />
       <img src={stocks} alt="img" />
-      <h1>Stock</h1>
+      <h1>Stocks</h1>
     </Container>
   );
 }
@@ -20,8 +20,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 340px;
-  height: 220px;
+  width: 540px;
+  height: 300px;
   position: relative;
   text-align: center;
   border-radius: 60px;
@@ -32,7 +32,7 @@ const Container = styled.div`
     text-shadow: 0 0 3px #ff0000, 0px 0px 5px #0000ff;
     font-size: 26px;
     z-index: 2;
-    margin-top: 185px;
+    margin-top: 250px;
     font-family: "Press Start 2P", cursive;
   }
 
@@ -47,18 +47,18 @@ const Container = styled.div`
   }
 
   img:first-child {
-    width: 300px;
+    width: 400px;
     z-index: 1;
   }
 
   img:nth-child(2) {
-    width: 40px;
+    width: 70px;
     z-index: 2;
-    margin-top: 120px;
+    margin-top: 150px;
   }
 
   img:nth-child(3) {
-    width: 100px;
-    margin-top: 100px;
+    width: 140px;
+    margin-top: 130px;
   }
 `;
